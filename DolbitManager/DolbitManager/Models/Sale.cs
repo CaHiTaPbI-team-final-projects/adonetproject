@@ -16,5 +16,7 @@ namespace DolbitManager.Models
 
         public int RecordId { get; set; }
         public virtual Record Record {get;set;}
+
+        public DateTime Date { get; set; }
     }
 }
