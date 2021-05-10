@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace DolbitManager.Models
 {
-    class Genre
+    public class Genre
     {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public virtual List<Record> Records { get; set; }
     }
 }
