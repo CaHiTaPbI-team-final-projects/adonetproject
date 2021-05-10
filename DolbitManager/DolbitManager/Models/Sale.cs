@@ -18,5 +18,7 @@ namespace DolbitManager.Models
         public virtual Record Record {get;set;}
 
         public DateTime Date { get; set; }
+
+        public virtual List<Sales> Sales { get; set; }
     }
 }
