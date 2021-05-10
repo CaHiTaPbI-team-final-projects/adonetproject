@@ -6,7 +6,19 @@ using System.Threading.Tasks;
 
 namespace DolbitManager.Models
 {
-    class User
+    public class User
     {
+        public int Id { get; set; }
+        public string Username { get; set; }
+        public string Password { get; set; }
+        public string Phone { get; set; }
+
+        public string FirstName {get;set;}
+        public string SecondName { get; set; }
+        public string ThirdName { get; set; }
+        public decimal MoneySpended { get; set; }
+
+        
+
     }
 }
