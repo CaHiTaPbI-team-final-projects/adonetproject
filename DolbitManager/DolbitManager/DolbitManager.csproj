@@ -67,6 +67,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Models\Genre.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Producer.cs" />
