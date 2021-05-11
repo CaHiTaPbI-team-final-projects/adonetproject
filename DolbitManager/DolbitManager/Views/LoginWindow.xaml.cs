@@ -10,22 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DolbitManager.Views;
+
 namespace DolbitManager.Views
 {
     /// <summary>
-    /// Логика взаимодействия для MainWindow.xaml
+    /// Логика взаимодействия для LoginWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        public MainWindow()
+        MainWindow _mainWindow;
+
+        public LoginWindow(MainWindow mainWindow)
         {
             InitializeComponent();
-            LoginWindow loginWindow = new LoginWindow(this);
-            loginWindow.ShowDialog();
-            
+            _mainWindow = mainWindow;
         }
     }
 }
