@@ -20,11 +20,12 @@ namespace DolbitManager.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        LoginWindow loginWindow;
         public MainWindow()
         {
             InitializeComponent();
-            LoginWindow loginWindow = new LoginWindow(this);
-            loginWindow.ShowDialog();
+            loginWindow = new LoginWindow();
+            loginWindow.ShowDialog();           
             
         }
     }
