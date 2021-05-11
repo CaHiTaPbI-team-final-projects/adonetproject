@@ -4,9 +4,63 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DolbitManager"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        mc:Ignorable="d" 
+        Title="MainWindow" Height="600" Width="1000" FontSize="20" FontFamily="Corbel">
     <Grid>
-         <!--UI for gays-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.05*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.Resources>
+            <Style TargetType="ComboBox">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style TargetType="Button">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style TargetType="TextBox">
+                <Setter Property="Margin" Value="10"/>
+            </Style>
+            <Style TargetType="ListView">
+                <Setter Property="Margin" Value="20"/>
+            </Style>
+        </Grid.Resources>
+
+        <Menu Grid.ColumnSpan="4">
+            <MenuItem Header="Header1" Name="head1"></MenuItem>
+            <MenuItem Header="Header2" Name="head2"></MenuItem>
+            <MenuItem Header="Header3" Name="head3"></MenuItem>
+        </Menu>
+
+        <ComboBox x:Name="genres" Grid.Row="1">
+            
+        </ComboBox>
+        <ComboBox x:Name="groups" Grid.Row="1" Grid.Column="1">
+
+        </ComboBox>
+        <ComboBox x:Name="producer" Grid.Row="1" Grid.Column="2">
+
+        </ComboBox>
+        <Button x:Name="filter" Content="Filter" Grid.Row="1" Grid.Column="3">
+            
+        </Button>
+        <TextBox x:Name="Search" Grid.Row="2" Grid.ColumnSpan="3">
+            
+        </TextBox>
+        <Button x:Name="search" Content="Search" Grid.Row="2" Grid.Column="4">
+
+        </Button>
+        <ListView x:Name="View" Grid.Row="3" Grid.ColumnSpan="4">
+            
+        </ListView>
     </Grid>
 </Window>
