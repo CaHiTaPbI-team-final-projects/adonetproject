@@ -16,9 +16,9 @@ namespace DolbitManager.Models
         public string FirstName {get;set;}
         public string SecondName { get; set; }
         public string ThirdName { get; set; }
-        public decimal MoneySpended { get; set; }
+        public decimal MoneySpent { get; set; }
 
         
-
+        public virtual List<Sale> Sales { get; set; }
     }
 }

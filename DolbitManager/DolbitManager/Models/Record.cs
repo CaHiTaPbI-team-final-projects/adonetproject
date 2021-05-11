@@ -21,6 +21,8 @@ namespace DolbitManager.Models
         public virtual Storage Storage { get; set; }
         public DateTime RecordDate {get;set;}
         public decimal BasicPrice { get; set; }
-        public decimal SalePrice { get; set; }
+        public int SalePrice { get; set; }
+
+        public virtual List<Sale> Sales { get; set; }
     }
 }
