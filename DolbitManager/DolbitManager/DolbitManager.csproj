@@ -76,6 +76,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="EF\EDDM.cs" />
     <Compile Include="Migrations\202105111504163_first.cs" />
     <Compile Include="Migrations\202105111504163_first.Designer.cs">
