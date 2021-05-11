@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-
+using DolbitManager.Views;
 namespace DolbitManager.Views
 {
     /// <summary>
@@ -23,6 +23,9 @@ namespace DolbitManager.Views
         public MainWindow()
         {
             InitializeComponent();
+            LoginWindow loginWindow = new LoginWindow(this);
+            loginWindow.ShowDialog();
+            
         }
     }
 }
