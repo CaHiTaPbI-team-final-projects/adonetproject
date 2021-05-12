@@ -14,7 +14,7 @@ using System.Windows;
 
 namespace DolbitManager.ViewModel
 {
-    class UserViewModel : INotifyPropertyChanged
+    public class UserViewModel : INotifyPropertyChanged
     {
         private EDDM dolBaza = new EDDM();
 
