@@ -65,7 +65,7 @@
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
                 </Style>
             </StackPanel.Resources>
-            <TextBox x:Name="LoginBox" Text="Login" GotFocus="LoginBox_GotFocus">
+            <TextBox x:Name="LoginBox" Text="{Binding Login, TargetNullValue=Login}" GotFocus="LoginBox_GotFocus">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
@@ -137,7 +137,7 @@
                     </Style>
                     
                 </StackPanel.Resources>
-                <Button x:Name="LogInButton" Content="LOG IN">
+                <Button x:Name="LogInButton" Content="LOG IN" Command="{Binding Authorize}" CommandParameter="{Binding ElementName=PasswordLogBox}">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="15"/>
@@ -201,51 +201,50 @@
                 </Style>
 
             </StackPanel.Resources>
-            <TextBox Name="email" Text="E-mail">
+            <TextBox Name="email" Text="{Binding EmailReg, TargetNullValue=E-mail}">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Name="Fname" Text="First Name">
+            <TextBox Name="Fname" Text="{Binding FnameReg, TargetNullValue='First Name'}">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Name="Sname" Text="Second Name">
+            <TextBox Name="Sname" Text="{Binding SnameReg, TargetNullValue='Second Name'}">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Name="Tname" Text="Third Name">
+            <TextBox Name="Tname" Text="{Binding TnameReg, TargetNullValue='Third Name'}">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Name="Pnumber" Text="Phone Number">
+            <TextBox Name="Pnumber" Text="{Binding PhoneReg, TargetNullValue='Phone number'}">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <TextBox Name="LoginRegBox" Text="YourLogin">
+            <TextBox Name="LoginRegBox" Text="{Binding LoginReg, TargetNullValue='YourLogin'}">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
                 </TextBox.Resources>
             </TextBox>
-            <PasswordBox Name="PasswordRegBox" Password="Password"/>
-            <Button Content="Register me!" Command="{Binding RegisterUser}"
-                    CommandParameter="{Binding RegSelectedLogin}">
+            <PasswordBox Name="PasswordRegBox" Password="Password"  />
+            <Button Content="Register me!" Command="{Binding Register}" CommandParameter="{Binding ElementName=PasswordRegBox}">
                 <Button.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>

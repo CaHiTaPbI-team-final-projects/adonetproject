@@ -92,6 +92,7 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="ViewModels\GenresViewModel.cs" />
     <Compile Include="ViewModels\GroupsViewModels.cs" />
+    <Compile Include="ViewModels\LoginWindowViewModel.cs" />
     <Compile Include="ViewModels\ProducersViewModels.cs" />
     <Compile Include="ViewModels\RecordsViewModels.cs" />
     <Compile Include="ViewModels\SaleViewModel.cs" />
