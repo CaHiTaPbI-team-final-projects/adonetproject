@@ -80,7 +80,8 @@ namespace DolbitManager.ViewModels
                 {
                     var newRecord = Records.Where(u => u.Id == 0).ToList();
                     foreach (var gu in newRecord)
-                        _EDDM.Records.Add(new Record() { Name = gu.Name });
+                        _EDDM.Records.Add(new Record() { Name = gu.Name, GroupId = gu.GroupId, ProducerId = gu.ProducerId, TrackCount = gu.TrackCount, GenreId = gu.GenreId, StorageId = gu.StorageId, RecordDate = gu.RecordDate, 
+                            BasicPrice =  gu.BasicPrice, SalePrice = gu.SalePrice });
                     _EDDM.SaveChanges();
                     System.Windows.MessageBox.Show("New Record added succesfully");
                 }));
