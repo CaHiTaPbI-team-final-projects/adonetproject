@@ -12,7 +12,7 @@ using DolbitManager.Views;
 using DolbitManager.EF;
 using System.Windows;
 
-namespace DolbitManager.ViewModel
+namespace DolbitManager.ViewModels
 {
     public class UserViewModel : INotifyPropertyChanged
     {
