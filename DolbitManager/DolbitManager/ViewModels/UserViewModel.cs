@@ -20,6 +20,15 @@ namespace DolbitManager.ViewModel
 
         public List<User> UsersList { get; set; } = new List<User>();
 
+        public UserViewModel()
+        {
+            var UserListVar = dolBaza.Users.ToList();
+            foreach (User user in UserListVar)
+            {
+                UsersList.Add(user);
+            }
+        }
+
         private User _selectedUser;
         public User SelectedUser
         {

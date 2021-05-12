@@ -20,6 +20,15 @@ namespace DolbitManager.ViewModel
 
         public List<Sale> SaleList { get; set; } = new List<Sale>();
 
+        public SaleViewModel()
+        {
+            var SaleListVar = dolBaza.Sales.ToList();
+            foreach (Sale sale in SaleListVar)
+            {
+                SaleList.Add(sale);
+            }
+        }
+
         private Sale _selectedSale;
         public Sale SelectedSale
         {

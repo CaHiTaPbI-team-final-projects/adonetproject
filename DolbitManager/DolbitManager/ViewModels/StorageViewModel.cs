@@ -20,6 +20,15 @@ namespace DolbitManager.ViewModel
 
         public List<Storage> StorageList { get; set; } = new List<Storage>();
 
+        public StorageViewModel()
+        {
+            var StorageListVar = dolBaza.Storages.ToList();
+            foreach (Storage storage in StorageListVar)
+            {
+                StorageList.Add(storage);
+            }
+        }
+
         private Storage _selectedStorage;
         public Storage SelectedStorage
         {
