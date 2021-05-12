@@ -13,6 +13,8 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DolbitManager.Views;
+using DolbitManager.Models;
+
 namespace DolbitManager.Views
 {
     /// <summary>
@@ -21,11 +23,18 @@ namespace DolbitManager.Views
     public partial class MainWindow : Window
     {
         LoginWindow loginWindow;
+        // Recieving user
+        private User authUser;
+
         public MainWindow()
         {
             InitializeComponent();
-            loginWindow = new LoginWindow();
-            loginWindow.ShowDialog();           
+            loginWindow = new LoginWindow(this);
+            loginWindow.ShowDialog();
+            authUser = loginWindow.authUser;
+            if(authUser.Username != null)
+                MessageBox.Show($"Hi,{authUser.Username}!");
+            
             
         }
     }

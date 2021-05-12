@@ -23,6 +23,7 @@ namespace DolbitManager.ViewModels
         private string _login;
         private string _password;
 
+        LoginWindow _loginWindow;
 
         //register values
         private string _loginReg;
@@ -34,14 +35,20 @@ namespace DolbitManager.ViewModels
         private string _phoneReg;
 
         private UserViewModel uvm = new UserViewModel();
-        User authUser = new User();
+
+        // Data for main window
+        public bool isAuthorized { get; set; }
+        public User authUser = new User();
+        //
+
         public ICommand Authorize { get; set; }
         public ICommand Register { get; set; }
-        public LoginWindowViewModel()
+        public LoginWindowViewModel(LoginWindow loginWindow)
         {
+            isAuthorized = false;
             Authorize = new RelayCommand(ForceAuthorize, canExecuteMethod);
             Register = new RelayCommand(ForceRegister, canExecuteMethod);
-            
+            _loginWindow = loginWindow;
         }
 
         public static string GetHash(string input)
@@ -162,7 +169,9 @@ namespace DolbitManager.ViewModels
             authUser = uvm.UsersList.Where(c => c.Username == _login).FirstOrDefault();
             if( authUser != null && authUser.Password == _password )
             {
+                isAuthorized = true;
                 MessageBox.Show("Authorize successfull!");
+                _loginWindow.Close();
             }
             else
             {
