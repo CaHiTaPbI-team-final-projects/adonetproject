@@ -11,7 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-
+using DolbitManager.ViewModels;
 namespace DolbitManager.Views
 {
     /// <summary>
@@ -23,7 +23,10 @@ namespace DolbitManager.Views
 
         public LoginWindow()
         {
+            
             InitializeComponent();
+            this.DataContext = new LoginWindowViewModel();
+            
             //_mainWindow = mainWindow;
         }
 
