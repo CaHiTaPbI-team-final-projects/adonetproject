@@ -5,29 +5,26 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DolbitManager"
         mc:Ignorable="d" 
-        Title="MainWindow" Height="600" Width="1000" FontSize="20" FontFamily="Corbel">
+        Title="MainWindow" Height="600" Width="1000" MinHeight="550" MinWidth="600"  FontSize="20" FontFamily="Corbel">
     <DockPanel>
         <DockPanel.Resources>
-            <Style TargetType="Button">
-                <Setter Property="Margin" Value="10"/>
+            <Style x:Key="UniStyle">
+                <Setter Property="ItemsControl.Margin" Value="5, 10"/>
+                <Setter Property="ItemsControl.FontFamily" Value="Corbel"/>
+                <Setter Property="ItemsControl.FontSize" Value="16"/>
+                <Setter Property="ItemsControl.Padding" Value="5"/>
             </Style>
-            <Style TargetType="TextBox">
-                <Setter Property="Margin" Value="5, 20, 5, 20"/>
-            </Style>
-            <Style TargetType="ComboBox">
-                <Setter Property="Margin" Value="5, 20, 5, 20"/>
-            </Style>
-            <Style TargetType="ListView">
-                <Setter Property="Margin" Value="10"/>
-            </Style>
+            <Style TargetType="Button" BasedOn="{StaticResource UniStyle}"/>
+            <Style TargetType="ComboBox" BasedOn="{StaticResource UniStyle}"/>
+            <Style TargetType="ListView" BasedOn="{StaticResource UniStyle}"/>
+            <Style TargetType="TextBox" BasedOn="{StaticResource UniStyle}"/>
+            <Style TargetType="DatePicker" BasedOn="{StaticResource UniStyle}"/>
         </DockPanel.Resources>
+
         <TabControl Grid.ColumnSpan="4">
             <TabItem x:Name="RecordsControlPanel">
                 <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <Ellipse Height="8" Width="8" Fill="Black" />
-                        <TextBlock Margin="3">Управление пластинками</TextBlock>
-                    </StackPanel>
+                    <TextBlock Margin="3">Управление пластинками</TextBlock>
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
@@ -52,9 +49,9 @@
                         <ComboBox x:Name="GroupCB" Grid.Row="0" Grid.Column="1"/>
                         <ComboBox x:Name="ProducerCB" Grid.Row="0" Grid.Column="2"/>
                         <ComboBox x:Name="GenreCB" Grid.Row="0" Grid.Column="3"/>
-                        <Button x:Name="GroupChangeButton" Grid.Row="1" Grid.Column="1"/>
-                        <Button x:Name="ProducerChangeButton" Grid.Row="1" Grid.Column="2"/>
-                        <Button x:Name="GenreChangeButton" Grid.Row="1" Grid.Column="3"/>
+                        <Button x:Name="GroupChangeButton" Content="Изменить группу" Grid.Row="1" Grid.Column="1"/>
+                        <Button x:Name="ProducerChangeButton" Content="Изменить продюсера" Grid.Row="1" Grid.Column="2"/>
+                        <Button x:Name="GenreChangeButton" Content="Изменить жанр" Grid.Row="1" Grid.Column="3"/>
                         <TextBox x:Name="Test1" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
                         <TextBox x:Name="Test2" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
                         <TextBox x:Name="Test3" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"/>
@@ -62,18 +59,15 @@
                         <DatePicker x:Name="Test5" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"/>
                         <TextBox x:Name="Test7" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"/>
                         <TextBox x:Name="Test8" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2"/>
-                        <Button x:Name="Add" Grid.Row="8" Grid.Column="1"/>
-                        <Button x:Name="Delete" Grid.Row="8" Grid.Column="2"/>
-                        <Button x:Name="Save" Grid.Row="8" Grid.Column="3"/>
+                        <Button x:Name="Add" Content="Добавить" Grid.Row="8" Grid.Column="1"/>
+                        <Button x:Name="Delete" Content="Удалить" Grid.Row="8" Grid.Column="2"/>
+                        <Button x:Name="Save" Content="Сахранить" Grid.Row="8" Grid.Column="3"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
             <TabItem x:Name="UserPanel">
                 <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <Ellipse Height="8" Width="8" Fill="Black" />
-                        <TextBlock Margin="3">Управление посетителями</TextBlock>
-                    </StackPanel>
+                    <TextBlock Margin="3"> Управление посетителями</TextBlock>
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
@@ -83,10 +77,7 @@
             </TabItem>
             <TabItem x:Name="PerfectSearchPanel">
                 <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <Ellipse Height="8" Width="8" Fill="Black" />
-                        <TextBlock Margin="3">Удобный поиск пластинок</TextBlock>
-                    </StackPanel>
+                    <TextBlock Margin="3">Удобный поиск пластинок</TextBlock>
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
@@ -107,23 +98,19 @@
                         </Grid.ColumnDefinitions>
                         <ListView x:Name="ViewSortedRecord" Grid.RowSpan="9"/>
                         <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Filter1" Grid.Row="1" Grid.Column="1"/>
-                        <Button x:Name="Filter2" Grid.Row="1" Grid.Column="2"/>
-                        <Button x:Name="Filter3" Grid.Row="1" Grid.Column="3"/>
+                        <Button x:Name="SearchButton" Content="Найти"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/> 
+                         <!-- Сделать универсальный поиск по всему. Запрос из поисковой строки прогонять через 3 листа (группа, продюсер, носитель) и выводить весь массив совпадений. Сделать через LINQ в одну мужскую строчку-->
                         <ComboBox x:Name="CB" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button1" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button2" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button3" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button4" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="Button1" Content="Самые свежие" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="Button2" Content="Топ продаж" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="Button3" Content="Легенды музыки" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="Button4" Content="Бессмертные жанры" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
-            <TabItem x:Name="SellingPanel">
+            <TabItem x:Name="SellingPanel" >
                 <TabItem.Header>
-                    <StackPanel Orientation="Horizontal">
-                        <Ellipse Height="8" Width="8" Fill="Black" />
-                        <TextBlock Margin="3">Управление пластинками</TextBlock>
-                    </StackPanel>
+                    <TextBlock Margin="3">Управление пластинками</TextBlock>
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
@@ -143,10 +130,9 @@
                         </Grid.ColumnDefinitions>
                         <ListView x:Name="ViewSelling" Grid.RowSpan="9"/>
                         <ComboBox x:Name="CB2" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button5" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button6" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button7" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button8" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="Button5" Content="Продать" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="Button6" Content="Списать" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="Button8" Content="Что-то еще" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
                         
                     </Grid>
                 </TabItem.Content>
