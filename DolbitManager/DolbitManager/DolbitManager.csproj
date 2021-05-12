@@ -90,10 +90,9 @@
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\Storage.cs" />
     <Compile Include="Models\User.cs" />
-    <Compile Include="ViewModels\GenresViewModel.cs" />
-    <Compile Include="ViewModels\GroupsViewModels.cs" />
-    <Compile Include="ViewModels\ProducersViewModels.cs" />
-    <Compile Include="ViewModels\RecordsViewModels.cs" />
+    <Compile Include="ViewModel\SaleViewModel.cs" />
+    <Compile Include="ViewModel\StorageViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
     </Compile>
@@ -141,6 +140,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\loginIcon2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\23123.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
