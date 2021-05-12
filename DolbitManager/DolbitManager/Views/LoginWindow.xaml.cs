@@ -26,5 +26,66 @@ namespace DolbitManager.Views
             InitializeComponent();
             //_mainWindow = mainWindow;
         }
+
+        private void SignInButton_Click(object sender, RoutedEventArgs e)
+        {
+            Reg1.Visibility = Visibility.Hidden;
+            Log1.Visibility = Visibility.Visible;
+            Log2.Visibility = Visibility.Visible;
+        }
+
+        private void SignUpButton_Click(object sender, RoutedEventArgs e)
+        {
+            Reg1.Visibility = Visibility.Visible;
+            Log1.Visibility = Visibility.Hidden;
+            Log2.Visibility = Visibility.Hidden;
+        }
+
+      
+
+        private void Reg1_GotFocus(object sender, RoutedEventArgs e)
+        {
+            //Registration
+            if(e.OriginalSource == email)
+            {
+                email.Clear();
+            }
+            else if(e.OriginalSource == Fname)
+            {
+                Fname.Clear();
+            }
+            else if (e.OriginalSource == Sname)
+            {
+                Sname.Clear();
+            }
+            else if (e.OriginalSource == Tname)
+            {
+                Tname.Clear();
+            }
+            else if (e.OriginalSource == Pnumber)
+            {
+                Pnumber.Clear();
+            }
+            else if (e.OriginalSource == LoginRegBox)
+            {
+                LoginRegBox.Clear();
+            }
+            else if (e.OriginalSource == PasswordRegBox)
+            {
+                PasswordRegBox.Clear();
+            }
+        }
+
+        private void PasswordLogBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordLogBox.Clear();
+        }
+
+        private void LoginBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            LoginBox.Clear();
+        }
+
+
     }
 }

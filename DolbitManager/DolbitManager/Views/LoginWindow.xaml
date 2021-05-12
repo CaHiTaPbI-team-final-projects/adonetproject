@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DolbitManager.Views"
         mc:Ignorable="d"
-        Title="LoginWindow" Height="600" Width="400" WindowStartupLocation="CenterScreen">
+        Title="LoginWindow" ResizeMode="NoResize" Height="650" Width="400" WindowStartupLocation="CenterScreen">
     <Window.Background>
         <ImageBrush ImageSource="../Images/bg.png"/>
     </Window.Background>
@@ -21,15 +21,16 @@
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
+        <!-- Login -->
+        <StackPanel x:Name="Icon" Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2">
             <Image Source="../Images/loginIcon.png" />
         </StackPanel>
-        <DockPanel Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2">
+        <DockPanel x:Name="SelectionButtons" Grid.Row="1" Grid.Column="0"  Grid.ColumnSpan="2">
             <DockPanel.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Background" Value="Transparent"/>
                     <Setter Property="Height" Value="40" />
-                    <Setter Property="Width" Value="Auto" />
+                    <Setter Property="Width" Value="100" />
                     <Setter Property="Foreground" Value="White" />
                     <Setter Property="Margin" Value="45,0,0,0" />
 
@@ -52,10 +53,10 @@
                     </Setter>
                 </Style>
             </DockPanel.Resources>
-            <Button Content="Sign in" DockPanel.Dock="Left"/>
-            <Button Content="Sign up" DockPanel.Dock="Right"/>
+            <Button  Content="Sign in" DockPanel.Dock="Left" Click="SignInButton_Click"/>
+            <Button  Content="Sign up" DockPanel.Dock="Right" Click="SignUpButton_Click"/>
         </DockPanel>
-        <StackPanel Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2">
+        <StackPanel x:Name="Log2" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Visibility="Visible">
             <StackPanel.Resources>
                 <Style TargetType="TextBox">
                     <Setter Property="Margin" Value="35"/>
@@ -64,7 +65,7 @@
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
                 </Style>
             </StackPanel.Resources>
-            <TextBox Text="Login">
+            <TextBox x:Name="LoginBox" Text="Login" GotFocus="LoginBox_GotFocus">
                 <TextBox.Resources>
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
@@ -73,8 +74,44 @@
             </TextBox>
             
         </StackPanel>
-        <StackPanel Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2">
+        <StackPanel  x:Name="Log1" Grid.Row="3" Grid.Column="0"  Grid.ColumnSpan="2" Visibility="Visible">
             <StackPanel.Resources>
+                <Style TargetType="PasswordBox">
+
+                    <Setter Property="PasswordChar" Value="●"/>
+
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Margin" Value="35"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+                    <Setter Property="Padding" Value="1"/>
+
+
+                    <Setter Property="AllowDrop" Value="true"/>
+
+                    <Setter Property="Template">
+
+                        <Setter.Value>
+
+                            <ControlTemplate TargetType="PasswordBox">
+
+                                <Border CornerRadius="15" x:Name="Bd" Background="White" BorderBrush="Black" BorderThickness="1" OpacityMask="{x:Null}">
+
+                                    <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" x:Name="PART_ContentHost" Template="{DynamicResource ScrollViewerControlTemplate1}"/>
+
+                                </Border>
+
+
+
+                            </ControlTemplate>
+
+                        </Setter.Value>
+
+                    </Setter>
+
+                </Style>
                 <Style TargetType="TextBox">
                     <Setter Property="Margin" Value="35"/>
                     <Setter Property="Height" Value="30"/>
@@ -82,14 +119,14 @@
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
                 </Style>
             </StackPanel.Resources>
-            <TextBox Text="Password" >
-                <TextBox.Resources>
+            <PasswordBox x:Name="PasswordLogBox" Password="Password" GotFocus="PasswordLogBox_GotFocus">
+                <PasswordBox.Resources>
                     
                     <Style TargetType="{x:Type Border}">
                         <Setter Property="CornerRadius" Value="15"/>
                     </Style>
-                </TextBox.Resources>
-            </TextBox>
+                </PasswordBox.Resources>
+            </PasswordBox>
             <StackPanel>
                 <StackPanel.Resources>
                     <Style TargetType="Button">
@@ -98,8 +135,9 @@
                         <Setter Property="Width" Value="250"/>
                         <Setter Property="Height" Value="30"/>
                     </Style>
+                    
                 </StackPanel.Resources>
-                <Button Content="SIGN IN">
+                <Button x:Name="LogInButton" Content="LOG IN">
                     <Button.Resources>
                         <Style TargetType="{x:Type Border}">
                             <Setter Property="CornerRadius" Value="15"/>
@@ -108,6 +146,113 @@
                 </Button>
             </StackPanel>
         </StackPanel>
-       
+        <!-- Register -->
+        <StackPanel x:Name="Reg1" Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Visibility="Hidden" TextBox.GotFocus="Reg1_GotFocus">
+            <StackPanel.Resources>
+                <Style TargetType="TextBox">
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="325"/>
+                    <Setter Property="TextAlignment" Value="Center"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                </Style>
+                <Style TargetType="Button">
+                    <Setter Property="Margin" Value="30"/>
+                    <Setter Property="Background" Value="LightGreen"/>
+                    <Setter Property="Width" Value="250"/>
+                    <Setter Property="Height" Value="30"/>
+                </Style>
+                <Style TargetType="PasswordBox">
+
+                    <Setter Property="PasswordChar" Value="●"/>
+
+                    <Setter Property="BorderThickness" Value="1"/>
+                    <Setter Property="Margin" Value="10"/>
+                    <Setter Property="Height" Value="30"/>
+                    <Setter Property="Width" Value="250"/>
+                    <Setter Property="VerticalContentAlignment" Value="Center"/>
+                    <Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+                    <Setter Property="Padding" Value="1"/>
+
+
+                    <Setter Property="AllowDrop" Value="true"/>
+
+                    <Setter Property="Template">
+
+                        <Setter.Value>
+
+                            <ControlTemplate TargetType="PasswordBox">
+
+                                <Border CornerRadius="15" x:Name="Bd" Background="White" BorderBrush="Black" BorderThickness="1" OpacityMask="{x:Null}">
+
+                                    <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" x:Name="PART_ContentHost" Template="{DynamicResource ScrollViewerControlTemplate1}"/>
+
+                                </Border>
+
+
+
+                            </ControlTemplate>
+
+                        </Setter.Value>
+
+                    </Setter>
+
+                </Style>
+
+            </StackPanel.Resources>
+            <TextBox Name="email" Text="E-mail">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox Name="Fname" Text="First Name">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox Name="Sname" Text="Second Name">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox Name="Tname" Text="Third Name">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox Name="Pnumber" Text="Phone Number">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <TextBox Name="LoginRegBox" Text="YourLogin">
+                <TextBox.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </TextBox.Resources>
+            </TextBox>
+            <PasswordBox Name="PasswordRegBox" Password="Password"/>
+            <Button Content="Register me!" Command="{Binding RegisterUser}"
+                    CommandParameter="{Binding RegSelectedLogin}">
+                <Button.Resources>
+                    <Style TargetType="{x:Type Border}">
+                        <Setter Property="CornerRadius" Value="15"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            
+        </StackPanel>
     </Grid>
 </Window>
