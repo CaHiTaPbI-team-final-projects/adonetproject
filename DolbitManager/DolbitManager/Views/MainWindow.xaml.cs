@@ -23,11 +23,9 @@ namespace DolbitManager.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public GenresViewModel gv { get; set; } = new GenresViewModel();
-        public GroupsViewModels grv { get; set; } = new GroupsViewModels();
+        public AppViewModel avm { get; set; } = new AppViewModel();
 
         LoginWindow loginWindow;
-        private User authUser;
 
         public MainWindow()
         {
