@@ -24,21 +24,17 @@ namespace DolbitManager.Views
     public partial class MainWindow : Window
     {
         public GenresViewModel gv { get; set; } = new GenresViewModel();
-
+        public GroupsViewModels grv { get; set; } = new GroupsViewModels();
 
         LoginWindow loginWindow;
-        // Recieving user
         private User authUser;
 
         public MainWindow()
         {
-            
-            
             InitializeComponent();
             
             loginWindow = new LoginWindow(this);
             loginWindow.ShowDialog();
-            authUser = loginWindow.authUser;
             
         }
     }

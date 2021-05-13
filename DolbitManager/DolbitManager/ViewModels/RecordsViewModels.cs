@@ -13,8 +13,6 @@ namespace DolbitManager.ViewModels
 {
     public class RecordsViewModels : INotifyPropertyChanged
     {
-
-
         private EDDM _EDDM;
 
         public ObservableCollection<Record> Records { get; set; }
