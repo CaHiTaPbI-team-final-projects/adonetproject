@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DolbitManager"
         mc:Ignorable="d" 
+        x:Name="MainWindow1"
         Title="MainWindow" Height="600" Width="1000" MinHeight="550" MinWidth="600"  FontSize="20" FontFamily="Corbel">
     <DockPanel>
         <DockPanel.Resources>
@@ -48,7 +49,7 @@
                         <ListView x:Name="ViewRecord" Grid.RowSpan="9"/>
                         <ComboBox x:Name="GroupCB" Grid.Row="0" Grid.Column="1"/>
                         <ComboBox x:Name="ProducerCB" Grid.Row="0" Grid.Column="2"/>
-                        <ComboBox x:Name="GenreCB" Grid.Row="0" Grid.Column="3"/>
+                        <ComboBox x:Name="GenreCB"  ItemsSource="{Binding ElementName=MainWindow1, Path=gv.Genres}" DisplayMemberPath="Name" Grid.Row="0" Grid.Column="3"/>
                         <Button x:Name="GroupChangeButton" Content="Изменить группу" Grid.Row="1" Grid.Column="1"/>
                         <Button x:Name="ProducerChangeButton" Content="Изменить продюсера" Grid.Row="1" Grid.Column="2"/>
                         <Button x:Name="GenreChangeButton" Content="Изменить жанр" Grid.Row="1" Grid.Column="3"/>
@@ -110,7 +111,7 @@
             </TabItem>
             <TabItem x:Name="SellingPanel" >
                 <TabItem.Header>
-                    <TextBlock Margin="3">Управление пластинками</TextBlock>
+                    <TextBlock Margin="3">Менеджмент</TextBlock>
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>
