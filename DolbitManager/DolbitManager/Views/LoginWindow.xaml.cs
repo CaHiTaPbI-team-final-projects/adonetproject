@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using DolbitManager.ViewModels;
+using DolbitManager.Models;
 namespace DolbitManager.Views
 {
     /// <summary>
@@ -19,15 +20,22 @@ namespace DolbitManager.Views
     /// </summary>
     public partial class LoginWindow : Window
     {
-       // MainWindow _mainWindow;
-
-        public LoginWindow()
+        // MainWindow data
+        MainWindow _mainWindow;
+        public User authUser = new User();
+        public bool isAuthorised { get; set; }
+        //
+        private LoginWindowViewModel LWVM;
+        public LoginWindow(MainWindow mainWindow)
         {
             
             InitializeComponent();
-            this.DataContext = new LoginWindowViewModel();
+            isAuthorised = false;
+            LWVM = new LoginWindowViewModel(this);
+            this.DataContext = LWVM;
             
-            //_mainWindow = mainWindow;
+            
+            _mainWindow = mainWindow;
         }
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
@@ -89,6 +97,21 @@ namespace DolbitManager.Views
             LoginBox.Clear();
         }
 
+  
 
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            isAuthorised = LWVM.isAuthorized;
+            authUser = LWVM.authUser;
+
+            if (isAuthorised == true)
+            {
+                
+            }
+            else
+            {
+                _mainWindow.Close();
+            }
+        }
     }
 }

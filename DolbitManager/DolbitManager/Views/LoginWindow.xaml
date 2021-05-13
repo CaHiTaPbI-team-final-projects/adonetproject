@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DolbitManager.Views"
         mc:Ignorable="d"
-        Title="LoginWindow" ResizeMode="NoResize" Height="650" Width="400" WindowStartupLocation="CenterScreen">
+        Title="LoginWindow" ResizeMode="NoResize" Height="650" Width="400" WindowStartupLocation="CenterScreen" Closing="Window_Closing" Closed="Window_Closed">
     <Window.Background>
         <ImageBrush ImageSource="../Images/bg.png"/>
     </Window.Background>
@@ -179,23 +179,14 @@
                     <Setter Property="AllowDrop" Value="true"/>
 
                     <Setter Property="Template">
-
                         <Setter.Value>
-
                             <ControlTemplate TargetType="PasswordBox">
-
                                 <Border CornerRadius="15" x:Name="Bd" Background="White" BorderBrush="Black" BorderThickness="1" OpacityMask="{x:Null}">
-
                                     <ScrollViewer SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" x:Name="PART_ContentHost" Template="{DynamicResource ScrollViewerControlTemplate1}"/>
-
                                 </Border>
-
-
-
                             </ControlTemplate>
 
                         </Setter.Value>
-
                     </Setter>
 
                 </Style>
