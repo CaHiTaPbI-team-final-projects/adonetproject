@@ -23,7 +23,7 @@ namespace DolbitManager.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public GenresViewModel gv = new GenresViewModel();
+        public GenresViewModel gv { get; set; } = new GenresViewModel();
 
 
         LoginWindow loginWindow;
@@ -32,11 +32,14 @@ namespace DolbitManager.Views
 
         public MainWindow()
         {
+            
+            
             InitializeComponent();
+            
             loginWindow = new LoginWindow(this);
             loginWindow.ShowDialog();
             authUser = loginWindow.authUser;
-            GenreCB.DataContext = gv;
+            
         }
     }
 }
