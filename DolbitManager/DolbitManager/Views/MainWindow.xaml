@@ -48,7 +48,7 @@
                         <ListView x:Name="ViewRecord" Grid.RowSpan="9"/>
                         <ComboBox x:Name="GroupCB" Grid.Row="0" Grid.Column="1"/>
                         <ComboBox x:Name="ProducerCB" Grid.Row="0" Grid.Column="2"/>
-                        <ComboBox x:Name="GenreCB" Grid.Row="0" Grid.Column="3"/>
+                        <ComboBox x:Name="GenreCB" ItemsSource="{Binding Genres}" DisplayMemberPath="Name" Grid.Row="0" Grid.Column="3"/>
                         <Button x:Name="GroupChangeButton" Content="Изменить группу" Grid.Row="1" Grid.Column="1"/>
                         <Button x:Name="ProducerChangeButton" Content="Изменить продюсера" Grid.Row="1" Grid.Column="2"/>
                         <Button x:Name="GenreChangeButton" Content="Изменить жанр" Grid.Row="1" Grid.Column="3"/>
@@ -110,7 +110,7 @@
             </TabItem>
             <TabItem x:Name="SellingPanel" >
                 <TabItem.Header>
-                    <TextBlock Margin="3">Управление пластинками</TextBlock>
+                    <TextBlock Margin="3">Менеджмент</TextBlock>
                 </TabItem.Header>
                 <TabItem.Content>
                     <Grid>

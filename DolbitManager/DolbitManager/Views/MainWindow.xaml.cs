@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DolbitManager.Views;
 using DolbitManager.Models;
+using DolbitManager.ViewModels;
 
 namespace DolbitManager.Views
 {
@@ -22,6 +23,9 @@ namespace DolbitManager.Views
     /// </summary>
     public partial class MainWindow : Window
     {
+        public GenresViewModel gv = new GenresViewModel();
+
+
         LoginWindow loginWindow;
         // Recieving user
         private User authUser;
@@ -32,10 +36,7 @@ namespace DolbitManager.Views
             loginWindow = new LoginWindow(this);
             loginWindow.ShowDialog();
             authUser = loginWindow.authUser;
-            if(authUser.Username != null)
-                MessageBox.Show($"Hi,{authUser.Username}!");
-            
-            
+            GenreCB.DataContext = gv;
         }
     }
 }
