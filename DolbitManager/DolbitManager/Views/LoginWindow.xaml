@@ -119,7 +119,7 @@
                     <Setter Property="VerticalContentAlignment" Value="Center"/>
                 </Style>
             </StackPanel.Resources>
-            <PasswordBox x:Name="PasswordLogBox" Password="Password" GotFocus="PasswordLogBox_GotFocus">
+            <PasswordBox x:Name="PasswordLogBox" Password="" GotFocus="PasswordLogBox_GotFocus">
                 <PasswordBox.Resources>
                     
                     <Style TargetType="{x:Type Border}">
