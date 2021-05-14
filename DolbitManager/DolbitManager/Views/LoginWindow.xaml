@@ -4,8 +4,11 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DolbitManager.Views"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+        xmlns:ev="clr-namespace:DolbitManager.Commands"
         mc:Ignorable="d"
-        Title="LoginWindow" ResizeMode="NoResize" Height="650" Width="400" WindowStartupLocation="CenterScreen" Closing="Window_Closed" Closed="Window_Closed">
+        Title="LoginWindow" ResizeMode="NoResize" Height="650" Width="400" WindowStartupLocation="CenterScreen" Closing="Window_Closed" Closed="Window_Closed" 
+        >
     <Window.Background>
         <ImageBrush ImageSource="../Images/bg.png"/>
     </Window.Background>
@@ -53,8 +56,20 @@
                     </Setter>
                 </Style>
             </DockPanel.Resources>
-            <Button  Content="Sign in" DockPanel.Dock="Left" Click="SignInButton_Click"/>
-            <Button  Content="Sign up" DockPanel.Dock="Right" Click="SignUpButton_Click"/>
+            <Button  Content="Sign in" DockPanel.Dock="Left" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                    <i:InvokeCommandAction Command="{Binding  SignInButton_Click}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
+            <Button  Content="Sign up" DockPanel.Dock="Right" >
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="Click">
+                        <i:InvokeCommandAction Command="{Binding SignUpButton_Click}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </Button>
         </DockPanel>
         <StackPanel x:Name="Log2" Grid.Row="2" Grid.Column="0"  Grid.ColumnSpan="2" Visibility="Visible">
             <StackPanel.Resources>
@@ -147,7 +162,7 @@
             </StackPanel>
         </StackPanel>
         <!-- Register -->
-        <StackPanel x:Name="Reg1" Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Visibility="Hidden" TextBox.GotFocus="Reg1_GotFocus">
+        <StackPanel x:Name="Reg1" Grid.Row="2" Grid.Column="0" Grid.RowSpan="3" Grid.ColumnSpan="2" Visibility="Hidden" TextBox.GotFocus="Reg1_GotFocus" >
             <StackPanel.Resources>
                 <Style TargetType="TextBox">
                     <Setter Property="Margin" Value="10"/>
