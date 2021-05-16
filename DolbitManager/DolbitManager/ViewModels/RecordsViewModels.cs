@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using DolbitManager.Models;
 using DolbitManager.EF;
 using DolbitManager.Commands;
+using Microsoft.VisualBasic;
 namespace DolbitManager.ViewModels
 {
     public class RecordsViewModels : INotifyPropertyChanged
@@ -40,6 +41,49 @@ namespace DolbitManager.ViewModels
             }
         }
 
+
+        private RelayCommand _newestRecords;
+        public RelayCommand NewestRecords
+        {
+            get
+            {
+               
+                
+                return _newestRecords ?? (_newestRecords = new RelayCommand(obj =>
+                {
+                    DateTime date = new DateTime();
+                    date = DateTime.Now;
+                    var newest = Records.Where(r => date.Subtract(r.RecordDate) < TimeSpan.FromDays(30)).ToList();
+                    Records.Clear();
+                    foreach (Record r in newest)
+                    {
+                        Records.Add(r);
+                    }     
+                }));
+            }
+        }
+
+
+        private RelayCommand _undyingRecords;
+        public RelayCommand UndyingRecords
+        {
+            get
+            {
+
+
+                return _undyingRecords ?? (_undyingRecords = new RelayCommand(obj =>
+                {
+                    
+                    
+                    var newest = Records.Where(r =>  r.GenreId == 1 && r.GenreId == 3 ).ToList();
+                    Records.Clear();
+                    foreach (Record r in newest)
+                    {
+                        Records.Add(r);
+                    }
+                }));
+            }
+        }
 
         private RelayCommand _addRecord;
         public RelayCommand AddRecord
