@@ -22,6 +22,7 @@ namespace DolbitManager.ViewModels
             _EDDM = new EDDM();
             Genres = new ObservableCollection<Genre>();
             var GenresList = _EDDM.Genres.ToList();
+            Genres.Add(new Genre() { Id = 999, Name = "Жанры" });
             foreach (Genre genre in GenresList)
             {
                 Genres.Add(genre);
