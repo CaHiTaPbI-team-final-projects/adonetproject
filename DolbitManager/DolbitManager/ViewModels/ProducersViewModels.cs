@@ -22,6 +22,7 @@ namespace DolbitManager.ViewModels
             _EDDM = new EDDM();
             Producers = new ObservableCollection<Producer>();
             var ProducersList = _EDDM.Producers.ToList();
+            Producers.Add(new Producer() { Id = 999, Name = "Продюсеры" });
             foreach (Producer producer in ProducersList)
             {
                 Producers.Add(producer);

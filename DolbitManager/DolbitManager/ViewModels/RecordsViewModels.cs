@@ -95,13 +95,13 @@ namespace DolbitManager.ViewModels
                     Record record = new Record()
                     {
                         Id = 0,
-                        Name = "",
+                        Name = "New record",
                         GroupId = 0,
                         ProducerId = 0,
                         TrackCount = 0,
                         GenreId = 0,
                         StorageId = 0,
-                        RecordDate = new DateTime(01,09,1939),
+                        RecordDate = new DateTime(1939, 09,1),
                         BasicPrice = 0,
                         SalePrice = 0,
                         //Sales = new List<Sale>()
@@ -141,6 +141,7 @@ namespace DolbitManager.ViewModels
                     var deletedRecord = _EDDM.Records.Where(c => c.Name == SelectedRecord.Name).FirstOrDefault();
                     if (deletedRecord != null)
                     {
+                        Records.Remove(deletedRecord);
                         _EDDM.Records.Remove(deletedRecord);
                         _EDDM.SaveChanges();
                         System.Windows.MessageBox.Show("Record вырезан succesfully");

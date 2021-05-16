@@ -22,7 +22,8 @@ namespace DolbitManager.ViewModels
             _EDDM = new EDDM();
             Groups = new ObservableCollection<Group>();
             var GroupsList = _EDDM.Groups.ToList();
-            foreach(Group group in GroupsList)
+            Groups.Add(new Group() { Id = -1, Name = "Группы" });
+            foreach (Group group in GroupsList)
             {
                 Groups.Add(group);
             }
