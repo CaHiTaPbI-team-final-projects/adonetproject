@@ -173,12 +173,11 @@ namespace DolbitManager.ViewModels
             if( authUser != null && authUser.Password == _password )
             {
                 isAuthorized = true;
-                MessageBox.Show("Authorize successfull!");
                 _loginWindow.Close();
             }
             else
             {
-                MessageBox.Show("Authorize Failed!");
+                MessageBox.Show("Authorize Failed!\nIncorrect login or password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
