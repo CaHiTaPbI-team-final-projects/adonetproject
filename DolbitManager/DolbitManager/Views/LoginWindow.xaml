@@ -7,7 +7,7 @@
         xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         xmlns:ev="clr-namespace:DolbitManager.Commands"
         mc:Ignorable="d"
-        Title="LoginWindow" ResizeMode="NoResize" Height="650" Width="400" WindowStartupLocation="CenterScreen" Closing="Window_Closed" Closed="Window_Closed" 
+        Title="LoginWindow" ResizeMode="NoResize" Height="650" Width="400" WindowStartupLocation="CenterScreen" Closing="Window_Closed" Closed="Window_Closed"  Icon="..\Images\favicon.png"
         >
     <Window.Background>
         <ImageBrush ImageSource="../Images/bg.png"/>
