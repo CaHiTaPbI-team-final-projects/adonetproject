@@ -121,6 +121,30 @@ namespace DolbitManager.ViewModels
             }
         }
 
+        private RelayCommand _findRecords;
+        public RelayCommand FindRecords
+        {
+            get
+            {
+                return _findRecords ?? (_findRecords = new RelayCommand(obj =>
+                {
+                    var txt = obj as System.Windows.Controls.TextBox;
+                    string text = txt.Text;
+                    
+                    RecordsFiltered.Clear();
+                    foreach (Record r in Records)
+                        RecordsFiltered.Add(r);
+
+                var newest = RecordsFiltered.Where(r => r.Name == text).ToList();
+                    RecordsFiltered.Clear();
+                    foreach (Record r in newest)
+                    {
+                        RecordsFiltered.Add(r);
+                    }
+                }));
+            }
+        }
+
         private RelayCommand _addRecord;
         public RelayCommand AddRecord
         {

@@ -102,8 +102,8 @@
                                 </GridView>
                             </ListView.View>
                         </ListView>
-                        <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="SearchButton" Content="Найти"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/> 
+                        <TextBox x:Name="SearchBox1" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="SearchButton" Content="Найти"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.FindRecords}" CommandParameter="{Binding ElementName=SearchBox1}"/> 
                          <!-- Сделать универсальный поиск по всему. Запрос из поисковой строки прогонять через 3 листа (группа, продюсер, носитель) и выводить весь массив совпадений. Сделать через LINQ в одну мужскую строчку-->
                         <ComboBox x:Name="CB" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
                         <Button x:Name="Button2" Content="Сбросить" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.ResetCommand}"/>
