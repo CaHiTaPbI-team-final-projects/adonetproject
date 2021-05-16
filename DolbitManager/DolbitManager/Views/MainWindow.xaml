@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DolbitManager"
         mc:Ignorable="d" 
         x:Name="MainWindow1"
-        Title="MainWindow" Height="600" Width="1000" MinHeight="550" MinWidth="600"  FontSize="20" FontFamily="Corbel">
+        Title="DolBitHD" Height="600" Width="1000" MinHeight="550" MinWidth="600"  FontSize="20" FontFamily="Corbel" Icon="..\Images\favicon.png">
     <DockPanel>
         <DockPanel.Resources>
             <Style x:Key="UniStyle">
@@ -91,7 +91,7 @@
                             <ColumnDefinition Width="1.2*"/>
                             <ColumnDefinition Width="1.2*"/>
                         </Grid.ColumnDefinitions>
-                        <ListView x:Name="ViewRecordFilter" Grid.RowSpan="9" SelectedItem="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord}" ItemsSource="{Binding ElementName=MainWindow1, Path=avm.recordvm.RecordsFiltered}">
+                        <ListView x:Name="ViewRecordFilter" Grid.RowSpan="9" SelectedItem="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecordFiltered}" ItemsSource="{Binding ElementName=MainWindow1, Path=avm.recordvm.RecordsFiltered}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="125"/>
@@ -106,8 +106,9 @@
                         <Button x:Name="SearchButton" Content="Найти"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/> 
                          <!-- Сделать универсальный поиск по всему. Запрос из поисковой строки прогонять через 3 листа (группа, продюсер, носитель) и выводить весь массив совпадений. Сделать через LINQ в одну мужскую строчку-->
                         <ComboBox x:Name="CB" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button1" Content="Самые свежие" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.NewestRecords}"/>
-                        <Button x:Name="Button2" Content="Топ продаж" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" />
+                        <Button x:Name="Button2" Content="Сбросить" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.ResetCommand}"/>
+                        <Button x:Name="Button1" Content="Самые свежие" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.NewestRecords}"/>
+                        
                         <Button x:Name="Button3" Content="Легенды музыки" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" />
                         <Button x:Name="Button4" Content="Бессмертные жанры" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.UndyingRecords}"/>
                     </Grid>

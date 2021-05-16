@@ -23,12 +23,17 @@ namespace DolbitManager.ViewModels
         {
             _EDDM = new EDDM();
             Records = new ObservableCollection<Record>();
+            RecordsFiltered = new ObservableCollection<Record>();
             var RecordsList = _EDDM.Records.ToList();
             foreach(Record record in RecordsList)
             {
                 Records.Add(record);
             }
-            RecordsFiltered = Records;
+
+            foreach (Record record in RecordsList)
+            {
+                RecordsFiltered.Add(record);
+            }
         }
 
         private Record _selectedRecord;
@@ -44,6 +49,19 @@ namespace DolbitManager.ViewModels
             }
         }
 
+        private Record _selectedRecordFiltered;
+        public Record SelectedRecordFiltered
+        {
+            get { return _selectedRecordFiltered; }
+            set
+            {
+                _selectedRecordFiltered = value;
+
+
+                OnPropertyChanged("SelectedRecordFiltered");
+            }
+        }
+
 
         private RelayCommand _newestRecords;
         public RelayCommand NewestRecords
@@ -52,15 +70,32 @@ namespace DolbitManager.ViewModels
             { 
                 return _newestRecords ?? (_newestRecords = new RelayCommand(obj =>
                 {
-                    RecordsFiltered = Records;
+                    RecordsFiltered.Clear();
+                    foreach (Record r in Records)
+                        RecordsFiltered.Add(r);
                     DateTime date = new DateTime();
                     date = DateTime.Now;
-                    var newest = Records.Where(r => date.Subtract(r.RecordDate) < TimeSpan.FromDays(30)).ToList();
+                    var newest = RecordsFiltered.Where(r => date.Subtract(r.RecordDate) < TimeSpan.FromDays(30)).ToList();
                     RecordsFiltered.Clear();
                     foreach (Record r in newest)
                     {
                         RecordsFiltered.Add(r);
                     }     
+                }));
+            }
+        }
+
+
+        private RelayCommand _resetCommand;
+        public RelayCommand ResetCommand
+        {
+            get
+            {
+                return _resetCommand ?? (_resetCommand = new RelayCommand(obj =>
+                {
+                    RecordsFiltered.Clear();
+                    foreach (Record r in Records)
+                        RecordsFiltered.Add(r);
                 }));
             }
         }
@@ -73,8 +108,10 @@ namespace DolbitManager.ViewModels
             {
                 return _undyingRecords ?? (_undyingRecords = new RelayCommand(obj =>
                 {
-                    RecordsFiltered = Records;
-                    var newest = Records.Where(r =>  r.GenreId == 1 || r.GenreId == 3 ).ToList();
+                    RecordsFiltered.Clear();
+                    foreach (Record r in Records)
+                        RecordsFiltered.Add(r);
+                    var newest = RecordsFiltered.Where(r =>  r.GenreId == 1 || r.GenreId == 3 ).ToList();
                     RecordsFiltered.Clear();
                     foreach (Record r in newest)
                     {
