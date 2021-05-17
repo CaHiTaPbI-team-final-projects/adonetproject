@@ -18,6 +18,9 @@ namespace DolbitManager.ViewModels
     {
         private EDDM dolBaza = new EDDM();
 
+        private RecordsViewModels recVM = new RecordsViewModels();
+        private UserViewModel userVM = new UserViewModel();
+
         public ObservableCollection<Sale> SaleList { get; set; } = new ObservableCollection<Sale>();
 
         public SaleViewModel()
@@ -67,9 +70,10 @@ namespace DolbitManager.ViewModels
             {
                 return _updateSale ?? (_updateSale = new RelayCommand(obj =>
                 {
+                    MainWindow wd = obj as MainWindow;
                     var newSales = SaleList.Where(u => u.Id == 0).ToList();
                     foreach (var ns in newSales)
-                        dolBaza.Sales.Add(new Sale() { RecordId = ns.RecordId, UserId = ns.UserId, Date = ns.Date });
+                        dolBaza.Sales.Add(new Sale() { RecordId =  wd.avm.recordvm.SelectedRecord.Id, UserId = wd.avm.uservm.SelectedUser.Id, Date = DateTime.Now });
                     dolBaza.SaveChanges();
                     MessageBox.Show("New Sale added succesfully");
                 }));
