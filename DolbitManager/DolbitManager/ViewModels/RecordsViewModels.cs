@@ -25,7 +25,7 @@ namespace DolbitManager.ViewModels
             Records = new ObservableCollection<Record>();
             RecordsFiltered = new ObservableCollection<Record>();
             var RecordsList = _EDDM.Records.ToList();
-            RecordsList.Add(new Record() { Id = -1, Name="Название трека"});
+            Records.Add(new Record() { Id = -1, Name="Название трека"});
             foreach (Record record in RecordsList)
             {
                 Records.Add(record);
