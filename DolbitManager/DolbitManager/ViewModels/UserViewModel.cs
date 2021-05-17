@@ -25,7 +25,7 @@ namespace DolbitManager.ViewModels
             dolBaza = new EDDM();
             UsersList = new ObservableCollection<User>();
             var UserListVar = dolBaza.Users.ToList();
-            UserListVar.Add(new User() { Id = -1, FirstName = "Пользователи", MoneySpent = 0, Password = "-", Phone = "0", SecondName = "-", ThirdName = "-", Username = "-" });
+            UsersList.Add(new User() { Id = -1, FirstName = "Пользователи", MoneySpent = 0, Password = "-", Phone = "0", SecondName = "-", ThirdName = "-", Username = "-" });
             foreach (User user in UserListVar) 
             {
                 UsersList.Add(user);
