@@ -18,7 +18,7 @@ namespace DolbitManager.ViewModels
     {
         private EDDM dolBaza = new EDDM();
 
-        public List<Sale> SaleList { get; set; } = new List<Sale>();
+        public ObservableCollection<Sale> SaleList { get; set; } = new ObservableCollection<Sale>();
 
         public SaleViewModel()
         {
