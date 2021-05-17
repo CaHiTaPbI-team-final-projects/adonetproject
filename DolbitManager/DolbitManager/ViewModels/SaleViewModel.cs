@@ -47,15 +47,15 @@ namespace DolbitManager.ViewModels
             {
                 return _addSale ?? (_addSale = new RelayCommand(obj =>
                 {
-                    Sale Sale = new Sale()
+                    Sale sale = new Sale()
                     {
                         Id = 0,
-                        RecordId = 0,
-                        UserId = 0,
+                        RecordId = 1,
+                        UserId = 1,
                         Date = new DateTime(2012,12,12),
                     };
-                    SaleList.Add(Sale);
-                    SelectedSale = Sale;
+                    SaleList.Add(sale);
+                    SelectedSale = sale;
                 }));
             }
         }
