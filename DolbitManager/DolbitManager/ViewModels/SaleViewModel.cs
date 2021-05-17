@@ -18,7 +18,7 @@ namespace DolbitManager.ViewModels
     {
         private EDDM dolBaza = new EDDM();
 
-        public List<Sale> SaleList { get; set; } = new List<Sale>();
+        public ObservableCollection<Sale> SaleList { get; set; } = new ObservableCollection<Sale>();
 
         public SaleViewModel()
         {
@@ -47,15 +47,15 @@ namespace DolbitManager.ViewModels
             {
                 return _addSale ?? (_addSale = new RelayCommand(obj =>
                 {
-                    Sale Sale = new Sale()
+                    Sale sale = new Sale()
                     {
                         Id = 0,
-                        RecordId = 0,
-                        UserId = 0,
+                        RecordId = 1,
+                        UserId = 1,
                         Date = new DateTime(2012,12,12),
                     };
-                    SaleList.Add(Sale);
-                    SelectedSale = Sale;
+                    SaleList.Add(sale);
+                    SelectedSale = sale;
                 }));
             }
         }

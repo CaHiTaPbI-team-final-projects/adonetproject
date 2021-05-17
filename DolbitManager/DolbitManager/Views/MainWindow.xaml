@@ -134,11 +134,22 @@
                             <ColumnDefinition Width="1.2*"/>
                             <ColumnDefinition Width="1.2*"/>
                         </Grid.ColumnDefinitions>
-                        <ListView x:Name="ViewSelling" Grid.RowSpan="9"/>
-                        <ComboBox x:Name="CB2" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button5" Content="Продать" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button6" Content="Списать" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button8" Content="Что-то еще" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <ListView x:Name="ViewSelling" Grid.RowSpan="9" SelectedItem="{Binding ElementName=MainWindow1, Path=avm.salevm.SelectedSale}" ItemsSource="{Binding ElementName=MainWindow1, Path=avm.salevm.SaleList}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Record.Name}" Width="125"/>
+                                    <GridViewColumn Header="UserFN" DisplayMemberBinding="{Binding Path=User.FirstName}" Width="125"/>
+                                    <GridViewColumn Header="UserSN" DisplayMemberBinding="{Binding Path=User.SecondName}" Width="125"/>
+                                    <GridViewColumn Header="Sale Date" DisplayMemberBinding="{Binding Path=Date}" Width="125"/>
+                                    <GridViewColumn Header="Sale Price" DisplayMemberBinding="{Binding Path=Record.BasicPrice}" Width="125"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ComboBox x:Name="CB2" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding ElementName=MainWindow1, Path=avm.recordvm.Records}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=MainWindow1, Path=avm.salevm.SelectedSale.RecordId}" />
+                        <ComboBox x:Name="CB3" Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3" ItemsSource="{Binding ElementName=MainWindow1, Path=avm.uservm.UsersList}" DisplayMemberPath="FirstName" SelectedIndex="{Binding ElementName=MainWindow1, Path=avm.salevm.SelectedSale.UserId}"/>                        
+                        <Button x:Name="Button5" Content="Продать" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"  Command="{Binding ElementName=MainWindow1, Path=avm.salevm.AddSale}"/>
+                        <Button x:Name="Button6" Content="Отменить продажу" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.salevm.DelSale}"/>
+                        <Button x:Name="Button8" Content="Сохранить" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.salevm.UpdateSale}"/>
                         
                     </Grid>
                 </TabItem.Content>

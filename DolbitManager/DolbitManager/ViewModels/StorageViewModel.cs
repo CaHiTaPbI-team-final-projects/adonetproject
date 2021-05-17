@@ -18,7 +18,7 @@ namespace DolbitManager.ViewModels
     {
         private EDDM dolBaza = new EDDM();
 
-        public List<Storage> StorageList { get; set; } = new List<Storage>();
+        public ObservableCollection<Storage> StorageList { get; set; } = new ObservableCollection<Storage>();
 
         public StorageViewModel()
         {

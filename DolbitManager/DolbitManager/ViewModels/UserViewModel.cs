@@ -16,14 +16,17 @@ namespace DolbitManager.ViewModels
 {
     public class UserViewModel : INotifyPropertyChanged
     {
-        private EDDM dolBaza = new EDDM();
+        private EDDM dolBaza;
 
-        public List<User> UsersList { get; set; } = new List<User>();
+        public ObservableCollection<User> UsersList { get; set; }
 
         public UserViewModel()
         {
+            dolBaza = new EDDM();
+            UsersList = new ObservableCollection<User>();
             var UserListVar = dolBaza.Users.ToList();
-            foreach (User user in UserListVar)
+            UserListVar.Add(new User() { Id = -1, FirstName = "Пользователи", MoneySpent = 0, Password = "-", Phone = "0", SecondName = "-", ThirdName = "-", Username = "-" });
+            foreach (User user in UserListVar) 
             {
                 UsersList.Add(user);
             }
