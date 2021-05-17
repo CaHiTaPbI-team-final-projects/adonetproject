@@ -43,6 +43,9 @@ namespace DolbitManager.ViewModels
 
         public ICommand Authorize { get; set; }
         public ICommand Register { get; set; }
+
+        
+
         public LoginWindowViewModel(LoginWindow loginWindow)
         {
             isAuthorized = false;
@@ -170,18 +173,55 @@ namespace DolbitManager.ViewModels
             if( authUser != null && authUser.Password == _password )
             {
                 isAuthorized = true;
-                MessageBox.Show("Authorize successfull!");
                 _loginWindow.Close();
             }
             else
             {
-                MessageBox.Show("Authorize Failed!");
+                MessageBox.Show("Authorize Failed!\nIncorrect login or password!", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
+
+        private RelayCommand signInButton_Click;
+        public RelayCommand SignInButton_Click
+        {
+            get
+            {
+                return signInButton_Click ??
+                    (signInButton_Click = new RelayCommand(obj =>
+                    {
+                        _loginWindow.Reg1.Visibility = Visibility.Hidden;
+                        _loginWindow.Log1.Visibility = Visibility.Visible;
+                        _loginWindow.Log2.Visibility = Visibility.Visible;
+
+                    }));
+            }
+        }
+
+        private RelayCommand signUpButton_Click;
+        public RelayCommand SignUpButton_Click
+        {
+            get
+            {
+                return signUpButton_Click ??
+                    (signUpButton_Click = new RelayCommand(obj =>
+                    {
+                        _loginWindow.Reg1.Visibility = Visibility.Visible;
+                        _loginWindow.Log1.Visibility = Visibility.Hidden;
+                        _loginWindow.Log2.Visibility = Visibility.Hidden;
+
+                    }));
+            }
+        }
+
+
+
+   
 
         private bool canExecuteMethod(object parameter)
         {
             return true;
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

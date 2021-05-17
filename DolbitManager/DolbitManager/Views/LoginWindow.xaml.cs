@@ -21,11 +21,13 @@ namespace DolbitManager.Views
     public partial class LoginWindow : Window
     {
         // MainWindow data
-        MainWindow _mainWindow;
+        public MainWindow _mainWindow;
         public User authUser = new User();
         public bool isAuthorised { get; set; }
         //
         private LoginWindowViewModel LWVM;
+
+
         public LoginWindow(MainWindow mainWindow)
         {
             
@@ -38,30 +40,29 @@ namespace DolbitManager.Views
             _mainWindow = mainWindow;
         }
 
-        private void SignInButton_Click(object sender, RoutedEventArgs e)
-        {
-            Reg1.Visibility = Visibility.Hidden;
-            Log1.Visibility = Visibility.Visible;
-            Log2.Visibility = Visibility.Visible;
-        }
-
-        private void SignUpButton_Click(object sender, RoutedEventArgs e)
-        {
-            Reg1.Visibility = Visibility.Visible;
-            Log1.Visibility = Visibility.Hidden;
-            Log2.Visibility = Visibility.Hidden;
-        }
+       
 
       
 
+       
+
+        private void PasswordLogBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            PasswordLogBox.Clear();
+        }
+
+        private void LoginBox_GotFocus(object sender, RoutedEventArgs e)
+        {
+            LoginBox.Clear();
+        }
+
         private void Reg1_GotFocus(object sender, RoutedEventArgs e)
         {
-            //Registration
-            if(e.OriginalSource == email)
+            if (e.OriginalSource == email)
             {
                 email.Clear();
             }
-            else if(e.OriginalSource == Fname)
+            else if (e.OriginalSource == Fname)
             {
                 Fname.Clear();
             }
@@ -87,18 +88,6 @@ namespace DolbitManager.Views
             }
         }
 
-        private void PasswordLogBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            PasswordLogBox.Clear();
-        }
-
-        private void LoginBox_GotFocus(object sender, RoutedEventArgs e)
-        {
-            LoginBox.Clear();
-        }
-
-  
-
         private void Window_Closed(object sender, EventArgs e)
         {
             isAuthorised = LWVM.isAuthorized;
@@ -106,12 +95,14 @@ namespace DolbitManager.Views
 
             if (isAuthorised == true)
             {
-                
+
             }
             else
             {
                 _mainWindow.Close();
             }
         }
+
+
     }
 }

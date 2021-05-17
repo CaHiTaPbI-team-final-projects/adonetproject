@@ -23,6 +23,7 @@ namespace DolbitManager.ViewModels
         public StorageViewModel()
         {
             var StorageListVar = dolBaza.Storages.ToList();
+            StorageList.Add(new Storage() { Id = -1, Name = "Носители" });
             foreach (Storage storage in StorageListVar)
             {
                 StorageList.Add(storage);

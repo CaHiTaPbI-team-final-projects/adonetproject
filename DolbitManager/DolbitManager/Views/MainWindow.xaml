@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:DolbitManager"
         mc:Ignorable="d" 
         x:Name="MainWindow1"
-        Title="MainWindow" Height="600" Width="1000" MinHeight="550" MinWidth="600"  FontSize="20" FontFamily="Corbel">
+        Title="DolBitHD" Height="600" Width="1000" MinHeight="550" MinWidth="600"  FontSize="20" FontFamily="Corbel" Icon="..\Images\favicon.png">
     <DockPanel>
         <DockPanel.Resources>
             <Style x:Key="UniStyle">
@@ -44,35 +44,30 @@
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="1.2*"/>
                             <ColumnDefinition Width="1.2*"/>
-                            <ColumnDefinition Width="1.2*"/>
                         </Grid.ColumnDefinitions>
-                        <ListView x:Name="ViewRecord" Grid.RowSpan="9"/>
-                        <ComboBox x:Name="GroupCB" Grid.Row="0" Grid.Column="1"/>
-                        <ComboBox x:Name="ProducerCB" Grid.Row="0" Grid.Column="2"/>
-                        <ComboBox x:Name="GenreCB"  ItemsSource="{Binding ElementName=MainWindow1, Path=gv.Genres}" DisplayMemberPath="Name" Grid.Row="0" Grid.Column="3"/>
-                        <Button x:Name="GroupChangeButton" Content="Изменить группу" Grid.Row="1" Grid.Column="1"/>
-                        <Button x:Name="ProducerChangeButton" Content="Изменить продюсера" Grid.Row="1" Grid.Column="2"/>
-                        <Button x:Name="GenreChangeButton" Content="Изменить жанр" Grid.Row="1" Grid.Column="3"/>
-                        <TextBox x:Name="Test1" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="Test2" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="Test3" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="Test4" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <DatePicker x:Name="Test5" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <TextBox x:Name="Test7" Grid.Row="7" Grid.Column="1" Grid.ColumnSpan="2"/>
-                        <TextBox x:Name="Test8" Grid.Row="7" Grid.Column="2" Grid.ColumnSpan="2"/>
-                        <Button x:Name="Add" Content="Добавить" Grid.Row="8" Grid.Column="1"/>
-                        <Button x:Name="Delete" Content="Удалить" Grid.Row="8" Grid.Column="2"/>
-                        <Button x:Name="Save" Content="Сахранить" Grid.Row="8" Grid.Column="3"/>
-                    </Grid>
-                </TabItem.Content>
-            </TabItem>
-            <TabItem x:Name="UserPanel">
-                <TabItem.Header>
-                    <TextBlock Margin="3"> Управление посетителями</TextBlock>
-                </TabItem.Header>
-                <TabItem.Content>
-                    <Grid>
-                        
+                        <ListView x:Name="ViewRecord" Grid.RowSpan="9" SelectedItem="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord}" ItemsSource="{Binding ElementName=MainWindow1, Path=avm.recordvm.Records}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="125"/>
+                                    <GridViewColumn Header="Tracks" DisplayMemberBinding="{Binding Path=TrackCount}" Width="125"/>
+                                    <GridViewColumn Header="Record Date" DisplayMemberBinding="{Binding Path=RecordDate}" Width="125"/>
+                                    <GridViewColumn Header="Basic Price" DisplayMemberBinding="{Binding Path=BasicPrice}" Width="125"/>
+                                        <GridViewColumn Header="Sell Price %" DisplayMemberBinding="{Binding Path=SalePrice}" Width="125"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
+                        <ComboBox x:Name="GroupCB" ItemsSource="{Binding ElementName=MainWindow1, Path=avm.grovm.Groups}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord.GroupId}"  Grid.Row="0" Grid.Column="1"/>
+                        <ComboBox x:Name="ProducerCB" ItemsSource="{Binding ElementName=MainWindow1, Path=avm.provm.Producers}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord.ProducerId}"  Grid.Row="0" Grid.Column="2"/>
+                        <ComboBox x:Name="GenreCB"  ItemsSource="{Binding ElementName=MainWindow1, Path=avm.genvm.Genres}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord.GenreId}"  Grid.Row="1" Grid.Column="1"/>
+                        <ComboBox x:Name="StorageCB"  ItemsSource="{Binding ElementName=MainWindow1, Path=avm.storvm.StorageList}" DisplayMemberPath="Name" SelectedIndex="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord.StorageId}"  Grid.Row="1" Grid.Column="2"/>
+                        <TextBox x:Name="Test1" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord.Name}"/>
+                        <TextBox x:Name="Test2" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord.TrackCount}"/>
+                        <TextBox x:Name="Test3" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord.BasicPrice}"/>
+                        <TextBox x:Name="Test4" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" Text="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord.SalePrice}"/>
+                        <DatePicker x:Name="Test5" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" SelectedDate="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord.RecordDate}"/>
+                        <Button x:Name="Add" Content="Добавить" Grid.Row="7" Grid.Column="1"  Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.AddRecord}"/>
+                        <Button x:Name="Delete" Content="Удалить" Grid.Row="7" Grid.Column="2" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.DelRecord}" CommandParameter="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecord}"/>
+                        <Button x:Name="Save" Content="Сохранить" Grid.Row="8" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.UpdateRecord}"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
@@ -95,17 +90,27 @@
                             <ColumnDefinition Width="5*"/>
                             <ColumnDefinition Width="1.2*"/>
                             <ColumnDefinition Width="1.2*"/>
-                            <ColumnDefinition Width="1.2*"/>
                         </Grid.ColumnDefinitions>
-                        <ListView x:Name="ViewSortedRecord" Grid.RowSpan="9"/>
+                        <ListView x:Name="ViewRecordFilter" Grid.RowSpan="9" SelectedItem="{Binding ElementName=MainWindow1, Path=avm.recordvm.SelectedRecordFiltered}" ItemsSource="{Binding ElementName=MainWindow1, Path=avm.recordvm.RecordsFiltered}">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Path=Name}" Width="125"/>
+                                    <GridViewColumn Header="Tracks" DisplayMemberBinding="{Binding Path=TrackCount}" Width="125"/>
+                                    <GridViewColumn Header="Record Date" DisplayMemberBinding="{Binding Path=RecordDate}" Width="125"/>
+                                    <GridViewColumn Header="Basic Price" DisplayMemberBinding="{Binding Path=BasicPrice}" Width="125"/>
+                                    <GridViewColumn Header="Sell Price %" DisplayMemberBinding="{Binding Path=SalePrice}" Width="125"/>
+                                </GridView>
+                            </ListView.View>
+                        </ListView>
                         <TextBox x:Name="SearchBox" Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="3"/>
                         <Button x:Name="SearchButton" Content="Найти"  Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="3"/> 
                          <!-- Сделать универсальный поиск по всему. Запрос из поисковой строки прогонять через 3 листа (группа, продюсер, носитель) и выводить весь массив совпадений. Сделать через LINQ в одну мужскую строчку-->
                         <ComboBox x:Name="CB" Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button1" Content="Самые свежие" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button2" Content="Топ продаж" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button3" Content="Легенды музыки" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3"/>
-                        <Button x:Name="Button4" Content="Бессмертные жанры" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3"/>
+                        <Button x:Name="Button2" Content="Сбросить" Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.ResetCommand}"/>
+                        <Button x:Name="Button1" Content="Самые свежие" Grid.Row="4" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.NewestRecords}"/>
+                        
+                        <Button x:Name="Button3" Content="Легенды музыки" Grid.Row="5" Grid.Column="1" Grid.ColumnSpan="3" />
+                        <Button x:Name="Button4" Content="Бессмертные жанры" Grid.Row="6" Grid.Column="1" Grid.ColumnSpan="3" Command="{Binding ElementName=MainWindow1, Path=avm.recordvm.UndyingRecords}"/>
                     </Grid>
                 </TabItem.Content>
             </TabItem>
