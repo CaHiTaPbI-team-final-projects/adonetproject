@@ -30,10 +30,8 @@ namespace DolbitManager.Views
         public MainWindow()
         {
             InitializeComponent();
-            
             loginWindow = new LoginWindow(this);
             loginWindow.ShowDialog();
-            
         }
     }
 }
